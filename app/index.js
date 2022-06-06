@@ -90,6 +90,8 @@ app.get("votes/count/:user",(req,res)=>{
         })
     })
 })
+
+const PORT = process.env.PORT || 8080
 app.listen(8080,()=>{
    console.log("Server started on http://localhost:8080")
 })
