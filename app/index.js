@@ -5,6 +5,11 @@ const app = express()
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
+app.get("/", (req,res) => {
+    fs.readFile("./db.json", {encoding:"utf-8"}, (err,data) => {
+        res.end("hello i am here")
+    })
+})
 function validation (req,res,next){
     if(req.url==='/user/login'){
         fs.readFile('./db.json','utf-8',(err,data) => {
@@ -20,6 +25,8 @@ function validation (req,res,next){
     }
    next()
 }
+
+
 app.post("/user/create",(req,res)=>{
     fs.readFile("./db.json",{encoding:"utf-8"},(err,data)=>{
         const parsed = JSON.parse(data);
