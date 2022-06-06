@@ -5,6 +5,10 @@ const app = express()
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
+
+
+const PORT = process.env.PORT || 8080
+
 app.get("/", (req,res) => {
     fs.readFile("./db.json", {encoding:"utf-8"}, (err,data) => {
         res.end("hello i am here")
@@ -98,7 +102,5 @@ app.get("votes/count/:user",(req,res)=>{
     })
 })
 
-const PORT = process.env.PORT || 8080
-app.listen(8080,()=>{
-   console.log("Server started on http://localhost:8080")
-})
+app.listen(PORT)
+
